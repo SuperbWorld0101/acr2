@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Member Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    .profile-container {
+      max-width: 800px;
+      margin: 60px auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      padding: 30px;
+      text-align: center;
+    }
+    .profile-container img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    .profile-container h2 {
+      font-size: 2rem;
+      margin: 10px 0;
+      color: #111;
+    }
+    .profile-container p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container" id="profile">
+    <!-- Dynamic content will load here -->
+  </div>
+
+  <script>
+    // Team data
+    const teamMembers = {
+      thulani: {
+        name: "Thulane Hlophe",
+        role: "Head of News",
+        image: "img/playlist/team 1.jpg",
+        bio: "Leads the news team in delivering accurate, credible, and timely news that keeps our community informed and engaged.",
+        },
+      vezi: {
+        name: "Vezi Mhlungu",
+        role: "Program Manager",
+        image: "img/playlist/team 2.jpg",
+        bio: " Oversees the development and scheduling of programmes, ensuring content is relevant, diverse, and aligned with community needs.",
+         },
+      sihle: {
+        name: "Siphesihle Magagula",
+        role: "Sales and Marketing Manager",
+        image: "img/playlist/team 3.jpg",
+        bio: "Builds partnerships, manages advertising campaigns, and drives revenue through creative marketing strategies that connect businesses with our audience. ",
+       },
+      mbongeni: {
+        name: "Mbongeni Ndlovu",
+        role: "Finance",
+        image: "img/playlist/team 4.jpg",
+         bio: "Manages the financial planning, budgeting, and ensures sustainability of the organization.",
+         },
+      busi: {
+        name: "Busi Thusini",
+        role: "Station Manager",
+        image: "img/playlist/team-busi.jpg",
+       bio: "Leads the day-to-day operations of Abaqulusi FM, ensuring compliance, technical reliability, and smooth broadcasting. Manages staff, oversees budgets and resources, and drives strategic initiatives to grow the station’s reach and impact.",
+         }
+    };
+
+    // Get ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const memberId = params.get("id");
+
+    const profile = document.getElementById("profile");
+
+    if (teamMembers[memberId]) {
+      const member = teamMembers[memberId];
+      profile.innerHTML = `
+        <img src="${member.image}" alt="${member.name}">
+        <h2>${member.name}</h2>
+        <p><strong>${member.role}</strong></p>
+        <p>${member.bio}</p>
+        <a href="about.html#team-section" class="back-link">← Back to Team</a>
+
+      `;
+    } else {
+      profile.innerHTML = `<p>Team member not found.</p>
+                           <a href="index.html#team" class="back-link">← Back to Team</a>`;
+    }
+  </script>
+</body>
+</html>
